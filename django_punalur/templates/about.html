@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% block active2  %} menu__item--current{% endblock  %}
+
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+<!--/script-->
+
+{% block body %}
+
+<!--//header-top-->
+ <!-- //Line Slider -->
+		<div style="background: url(static/images/jesus8.jpg) no-repeat 0px 0px;" class="top_banner two">
+			<div class="container">
+			       <div class="sub-hd-inner">
+						<h3 class="tittle">ABOUT <span>US</span></h3>
+					</div>
+			</div>
+		</div>
+		<div class="main-textgrids">
+				 		<div class="container">
+							{% for i in about %}
+				 			<div   class=" ab-text ">{{i.about_diocese|safe}}</p>	
+
+				 			</div>
+							 {% endfor %}
+						
+							
+							
+							</div>
+				 			<div class="clearfix"> </div>
+						</div>
+				 		</div>
+				 </div>
+<!--//team-->
+
+
+		<!--start-smooth-scrolling-->
+						<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+								<!--end-smooth-scrolling-->
+		<a href="#house" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+
+	{% endblock%}
+	

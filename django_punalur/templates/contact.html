@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+<style>
+	@media (max-width:500px) {
+		.right-form {
+			display: none;
+		}
+		
+	}
+</style>
+<!--start-home-->
+{% block active5  %} menu__item--current{% endblock  %}
+{% block  body %}
+ <!-- //Line Slider -->
+		<div  class="top_banner two" style="background: url(static/images/church3.jpg) no-repeat 0px 0px;">
+			<div class="container">
+			       <div class="sub-hd-inner">
+						<h3 class="tittle">CONTACT <span>US</span></h3>
+					</div>
+			</div>
+		</div>
+	<!--/contact-->		
+		<div class="contact-top" >
+		    <div class="container" >
+				  <div class="contact-text" >
+		    <div class="container" style="background: url(static/images/church5.jpg) no-repeat 0px 0px;">
+				<div class="con-text" >
+					  <p><a href="mailto:kattuparamban1103@gmail.com"> contact@example.com</a></p>
+				     <p> +91 9929292923</p>
+					 <h6>Punalur Diocese</h6>
+				  </div>
+				 </div>
+				<div style="margin-bottom:5rem;margin-top:3rem" class="contact-form">
+					     <form method="post" action="contact" class="left_form">
+							{% csrf_token %}
+					    	<div>
+						    	<span><label>Full Name</label></span>
+						    	<span><input placeholder="Name" name="userName" type="text" class="textbox"></span>
+						    </div>
+						    <div>
+						    	<span><label>E-MAIL</label></span>
+						    	<span><input placeholder="Email" name="userEmail" type="text" class="textbox"></span>
+						    </div>
+						    <div>
+						     	<span><label>Fax</label></span>
+						    	<span><input placeholder="Mobile Number"  name="userPhone" type="text" class="textbox"></span>
+						    </div>
+							<div>					    	
+								<span><label>SUBJECT</label></span>
+								<span><textarea  placeholder="Message" name="userMsg"> </textarea></span>
+							</div>
+						   <div>
+								<span><input type="submit" value="Submit" class="myButton"></span>
+						  </div>
+					    </form>
+					    <form class="right_form">
+							
+								<img src="{% static '/images/cathedral.jpg' %}" alt="Cathedral">
+							
+					    </form>
+					    <div class="clearfix"></div>
+				  </div>
+			</div>
+		</div>
+	<!--//contact-->	
+
+	 
+
+	{% endblock  %}
+	

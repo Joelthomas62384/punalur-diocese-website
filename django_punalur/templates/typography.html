@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+{% load static %}
+<script type="applisalonion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />	
+<link rel="stylesheet" href="css/slider.css">
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<!--/web-font-->
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+<!--/script-->
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+</script>
+
+{% block active3  %} menu__item--current{% endblock  %}
+{% block body %}
+<style>
+    .card {
+        padding-top: 20px;
+        margin: 10px 0 20px 0;
+        background-color: #ffffff;
+        border: 1px solid #d8d8d8;
+        border-top-width: 0;
+        border-bottom-width: 2px;
+        -webkit-border-radius: 3px;
+           -moz-border-radius: 3px;
+                border-radius: 3px;
+        -webkit-box-shadow: none;
+           -moz-box-shadow: none;
+                box-shadow: none;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+	 
+      
+      
+      .card.hovercard {
+        position: relative;
+        width: 300px;
+        padding-top: 0;
+        overflow: hidden;
+        text-align: center;
+        background-color: #fff;
+      }
+      
+      .card.hovercard img {
+        width: 300px;
+        height: 200px;
+      }
+      .card.hovercard:hover{
+		border: solid 1px #CCC;
+		-moz-box-shadow: 1px 1px 5px #999;
+		-webkit-box-shadow: 1px 1px 5px #999;
+			box-shadow: 1px 1px 5px #999;
+	  }
+      .card.hovercard .avatar {
+        position: relative;
+        top: -40px;
+        margin-bottom: -40px;
+      }
+      
+      .card.hovercard .avatar img {
+        width: 80px;
+        height: 80px;
+        max-width: 80px;
+        max-height: 80px;
+        -webkit-border-radius: 50%;
+           -moz-border-radius: 50%;
+                border-radius: 50%;
+      }
+      
+      .card.hovercard .info {
+        padding: 4px 8px 10px;
+      }
+      
+      .card.hovercard .info .title {
+        margin-bottom: 4px;
+        font-size: 24px;
+        line-height: 1;
+        color: #262626;
+        vertical-align: middle;
+      }
+      
+      .card.hovercard .info .desc {
+        overflow: hidden;
+        font-size: 12px;
+        line-height: 20px;
+        color: #737373;
+        text-overflow: ellipsis;
+      }
+      
+      .card.hovercard .bottom1 {
+        padding: 0 20px;
+        margin-bottom: 17px;
+      }
+      
+      .card.people .card-bottom1 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: inline-block;
+        width: 100%;
+        padding: 10px 20px;
+        line-height: 29px;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+	  @media screen and (max-width:728px) and (min-width:510px) {
+		.card.hovercard{
+			left:4rem;
+		}
+		
+	  }
+	  @media screen and (max-width:280px) and (min-width:75px) {
+		.card.hovercard{
+			width:194px
+		}
+		
+	  }
+	  @media screen and (max-width:280px) and (min-width:75px) {
+		.card.hovercard{
+			width:194px;
+			left:-6px;
+		}
+		.bottom1 {
+				margin-left:-3rem;
+		}
+		
+	  }
+</style>
+
+ <!-- //Line Slider -->
+		<div class="top_banner two" style="background: url(static/images/church3.jpg) no-repeat 0px 0px;">
+			<div class="container">
+			       <div class="sub-hd-inner">
+						<h3 class="tittle">Diocesan<span> Clergy</span></h3>
+					</div>
+			</div>
+		</div>
+			<!-- typography -->
+			<div style="align-self:start; margin-top:3rem" class="container  ">
+									
+    
+				<div style="margin:25px" class="card hovercard col-xs-12 col-sm-12 col-md-6 col-lg-1">
+				   <img src="{% static '/images/news1.jpg' %}" alt=""/>
+				   
+				   <div class="info">
+					  <div class="title">
+						 Fr._____________
+					  </div>
+					  <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, facere expedita. Nemo vitae ipsam repudiandae atque nesciunt, ipsum numquam. Quidem laboriosam maxime omnis obcaecati perferendis!
+					  </div>
+					  
+				   </div>
+				   <div class="bottom1">
+					<a style="position: relative; left:-16px;height:auto; border:2px;border-radius: 3px;    border: 2px;	border-radius: 0;padding: 2vh;width: 185px; margin-left: 1rem;	font-size: x-large;	margin-top: 2rem;width:auto; href="about" class="btn btn-danger ">Read more</a>
+				</div>
+				</div>
+				<div style="margin:25px" class="card hovercard col-xs-12 col-sm-12 col-md-6 col-lg-2">
+					
+					<img src="{% static '/images/news2.jpg' %}" alt=""/>
+				
+					<div class="info">
+					   <div class="title">
+						  Fr._____________
+					   </div>
+					   <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, facere expedita. Nemo vitae ipsam repudiandae atque nesciunt, ipsum numquam. Quidem laboriosam maxime omnis obcaecati perferendis!
+					   </div>
+					   
+					</div>
+					<div class="bottom1">
+						<a style="position: relative; left:-16px;height:auto; border:2px;border-radius: 3px;    border: 2px;	border-radius: 0;padding: 2vh;width: 185px; margin-left: 1rem;	font-size: x-large;	margin-top: 2rem;width:auto; href="about" class="btn btn-danger ">Read more</a>
+					</div>
+					  </div>
+					  <div style="margin:25px" class="card hovercard col-xs-12 col-sm-12 col-md-6 col-lg-2">
+						<img src="{% static '/images/news3.jpg' %}" alt=""/>
+						
+						<div class="info">
+						   <div class="title">
+							  Fr._____________
+						   </div>
+						   <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, facere expedita. Nemo vitae ipsam repudiandae atque nesciunt, ipsum numquam. Quidem laboriosam maxime omnis obcaecati perferendis!
+						   </div>
+						   
+						</div>
+						<div class="bottom1">
+							<a style="position: relative; left:-16px;height:auto; border:2px;border-radius: 3px;    border: 2px;	border-radius: 0;padding: 2vh;width: 185px; margin-left: 1rem;	font-size: x-large;	margin-top: 2rem;width:auto;" href="about" class="btn btn-danger ">Read more</a>
+						</div>
+					 </div>
+					
+							<!-- typography -->
+			
+									
+    
+				<div style="margin:25px" class="card hovercard col-xs-12 col-sm-12 col-md-6 col-lg-1">
+				   <img src="{% static '/images/news1.jpg' %}" alt=""/>
+				   
+				   <div class="info">
+					  <div class="title">
+						 Fr._____________
+					  </div>
+					  <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, facere expedita. Nemo vitae ipsam repudiandae atque nesciunt, ipsum numquam. Quidem laboriosam maxime omnis obcaecati perferendis!
+					  </div>
+					  
+				   </div>
+				   <div class="bottom1">
+					<a style="position: relative; left:-16px;height:auto; border:2px;border-radius: 3px;    border: 2px;	border-radius: 0;padding: 2vh;width: 185px; margin-left: 1rem;	font-size: x-large;	margin-top: 2rem;width:auto;  "href="about" class="btn btn-danger ">Read more</a>
+				</div>
+				</div>
+				<div style="margin:25px" class="card hovercard col-xs-12 col-sm-12 col-md-6 col-lg-2">
+					
+					<img src="{% static '/images/news2.jpg' %}" alt=""/>
+				
+					<div class="info">
+					   <div class="title">
+						  Fr._____________
+					   </div>
+					   <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, facere expedita. Nemo vitae ipsam repudiandae atque nesciunt, ipsum numquam. Quidem laboriosam maxime omnis obcaecati perferendis!
+					   </div>
+					   
+					</div>
+					<div class="bottom1">
+						<a style="position: relative; left:-16px;height:auto; border:2px;border-radius: 3px;    border: 2px;	border-radius: 0;padding: 2vh;width: 185px; margin-left: 1rem;	font-size: x-large;	margin-top: 2rem;width:auto; " href="about" class="btn btn-danger ">Read more</a>
+					</div>
+					  </div>
+					  <div style="margin:25px" class="card hovercard col-xs-12 col-sm-12 col-md-6 col-lg-2">
+						<img src="{% static '/images/news3.jpg' %}" alt=""/>
+						
+						<div class="info">
+						   <div class="title">
+							  Fr._____________
+						   </div>
+						   <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, facere expedita. Nemo vitae ipsam repudiandae atque nesciunt, ipsum numquam. Quidem laboriosam maxime omnis obcaecati perferendis!
+						   </div>
+						   
+						</div>
+						<div class="bottom1">
+							<a style="position: relative; left:-16px;height:auto; border:2px;border-radius: 3px;    border: 2px;	border-radius: 0;padding: 2vh;width: 185px; margin-left: 1rem;	font-size: x-large;	margin-top: 2rem;width:auto; "href="about" class="btn btn-danger ">Read more</a>
+						</div>
+					 </div>
+					</div>
+<!-- //shortcodes -->
+
+		<!--start-smooth-scrolling-->
+						<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+								<!--end-smooth-scrolling-->
+		<a href="#house" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<script src="static/js/bootstrap.js"></script>
+
+	{% endblock  %}
+	
+
+	
+	

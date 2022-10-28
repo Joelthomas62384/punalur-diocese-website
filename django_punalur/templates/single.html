@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block active6 %} menu__item--current{% endblock %}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+{% block css %}
+<script
+	type="applisalonion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Custom Theme files -->
+<link href="/{% static 'css/style.css'%}" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="/{% static 'css/slider.css'%}">
+<script src="/{% static 'js/jquery-1.11.1.min.js'%}"></script>
+<script type="text/javascript" src="/{% static 'js/move-top.js'%}"></script>
+<script type="text/javascript" src="/{% static 'js/easing.js'%}"></script>
+<!--/web-font-->
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+<!--/script-->
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+		$(".scroll").click(function (event) {
+			event.preventDefault();
+			$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+		});
+	});
+</script>
+{% endblock %}
+
+
+<!--start-home-->
+{% block body %}
+
+<!--/single-->
+
+
+<div class="single">
+	<div class="container">
+
+
+
+		<div class="article-post w3l">
+			<div class="post-details s-page">
+				<img style="height:100px;" src="/media/{{blog_posts.author_image}}" alt="{{blog_posts.author}}"
+					class="img-responsive">
+				<h2>{{blog_posts.title}}</h2>
+				<p style="margin-bottom:5em;">- <strong>{{blog_posts.author}}</strong> |{{blog_posts.Time_stamp|naturaltime}} </p>
+				{{blog_posts.content|safe}}
+			</div>
+
+			<!--post-details-->
+			<div class="clearfix"> </div>
+		</div>
+
+		{% comment %} Comments {% endcomment %}
+		
+		
+		
+
+		<div style="margin-top:5em;" class="top-comments">
+			<h3> <span> Comments</span> ({{commentlen}}) </h3>
+			{% if commentlen < 1 %}
+			<h3 style="font-size:14px">Be the first one to<span> comment </span>in this Blog</h3>
+			
+			
+			{% endif %}
+			{% for comment in comments  %}
+			<div class="met">
+				<div class="code-in">
+					<p class="smith"><a href="#">{{comment.username}}</a> <span style="margin-left: -22px;">  {{comment.timestamp|naturaltime}}</span></p>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="comments-top-top">
+					<div class="men">
+						<i class="glyphicon glyphicon-user"></i>
+					</div>
+					<p class="men-it">{{comment.comment}}</p>
+					{% comment %} <a class="reply" href="#"data-toggle="collapse" aria-expanded="false" aria-controls="footwear"><i> </i>REPLY</a> {% endcomment %}
+					
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			
+			{% endfor %}
+		</div>
+		
+		<div class="contatiner">
+		<div class="leave w3l">
+			
+			<h3>Leave <span> a comment </span></h3>
+			<form method="post" action="postComment">
+				{% csrf_token %}
+				<div class="single-grid">
+					<div class="single-us">
+						<form class="left_form">
+
+							<div>
+								<span><label>Full Name</label></span>
+								<span><input placeholder="Name" name="nameComment" type="text" class="textbox"></span>
+								<span><input name="postSno" type="hidden" value='{{blog_posts.serial_no}}'
+										class="textbox"></span>
+
+								<span><label>SUBJECT</label></span>
+								<span><textarea name="comment" placeholder="Message"> </textarea></span>
+
+								<span><input type="submit" value="Submit" class="myButton"></span>
+							</div>
+						</form>
+						<form class="right_form">
+
+
+
+						</form>
+
+					</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<!--//single-->
+
+<!--/start-footer-section-->
+<script>
+	$(document).ready(function(){
+		$("#reply").toggle(
+		  function(){$("p").css({"color": "red"});},
+		  function(){$("p").css({"color": "blue"});},
+		  function(){$("p").css({"color": "green"});
+		});
+	  });
+	  </script>
+
+
+{% endblock %}

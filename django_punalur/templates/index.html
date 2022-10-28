@@ -1,0 +1,534 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block active1 %} menu__item--current{% endblock %}
+<!--start-home-->
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/slider.css' %}">
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+
+	:root {
+		--color: #3c3163;
+		--transition-time: 0.5s;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		margin: 0;
+		min-height: 100vh;
+		font-family: 'Open Sans';
+		background: #fafafa;
+	}
+
+	a {
+		color: inherit;
+	}
+
+	.cards-wrapper {
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: 4rem;
+		padding: 0rem;
+		margin: 0 auto;
+		width: max-content;
+	}
+
+	.card {
+		font-family: 'Heebo';
+		--bg-filter-opacity: 0.5;
+		background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
+		height: 20em;
+		width: 15em;
+		font-size: 1.5em;
+		color: white;
+		border-radius: 1em;
+		padding: 1em;
+		/*margin: 2em;*/
+		display: flex;
+		align-items: flex-end;
+		background-size: cover;
+		background-position: center;
+		margin-left: -2px transition: all, var(--transition-time);
+		position: relative;
+		overflow: hidden;
+		border: 10px solid #ccc;
+		text-decoration: none;
+	}
+
+	.card:hover {
+		transform: rotate(0);
+	}
+
+	.card h1 {
+		margin: 0;
+		font-size: 1.5em;
+		line-height: 1.2em;
+	}
+
+	.card p {
+		font-size: 0.75em;
+		font-family: 'Open Sans';
+		margin-top: 0.5em;
+		line-height: 2em;
+	}
+	.card p{
+		color:white;
+		margin-bottom:15px
+	  }
+	  .card:hover p{
+		color:black
+	  }
+	
+	.card .tags {
+		display: flex;
+	}
+
+	.card h5 {
+		font-size: 1em;
+		margin-bottom: 23px;
+	}
+
+	.card .tags .tag {
+		font-size: 0.75em;
+		background: rgba(255, 255, 255, 0.5);
+		border-radius: 0.3rem;
+		padding: 0 0.5em;
+		margin-right: 0.5em;
+		line-height: 1.5em;
+		transition: all, var(--transition-time);
+	}
+
+	.card:hover .tags .tag {
+		background: var(--color);
+		color: white;
+	}
+
+	.card .date {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 0.75em;
+		padding: 1em;
+		line-height: 1em;
+		opacity: .8;
+	}
+
+	.card:before,
+	.card:after {
+		content: '';
+		transform: scale(0);
+		transform-origin: top left;
+		border-radius: 50%;
+		position: absolute;
+		left: -50%;
+		top: -50%;
+		z-index: -5;
+		transition: all, var(--transition-time);
+		transition-timing-function: ease-in-out;
+	}
+
+	.card:before {
+		background: #ddd;
+		width: 250%;
+		height: 250%;
+	}
+
+	.card:after {
+		background: white;
+		width: 200%;
+		height: 200%;
+	}
+
+	.card:hover {
+		color: var(--color);
+	}
+
+	.card:hover:before,
+	.card:hover:after {
+		transform: scale(1);
+	}
+
+	.card-grid-space .num {
+		font-size: 3em;
+		margin-bottom: 1.2rem;
+		margin-left: 1rem;
+	}
+
+	.info {
+		font-size: 1.2em;
+		display: flex;
+		padding: 1em 3em;
+		height: 3em;
+	}
+
+	.info img {
+		height: 3em;
+		margin-right: 0.5em;
+	}
+
+	.info h1 {
+		font-size: 1em;
+		font-weight: normal;
+	}
+
+	/* MEDIA QUERIES */
+	@media screen and (max-width: 1285px) {
+		.cards-wrapper {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media screen and (max-width: 900px) {
+		.cards-wrapper {
+			grid-template-columns: 1fr;
+		}
+
+		.info {
+			justify-content: center;
+		}
+
+		.card-grid-space .num {
+			/margin-left: 0;
+			/text-align: center;
+		}
+	}
+
+	@media screen and (max-width: 500px) {
+		.cards-wrapper {
+			padding: 4rem 2rem;
+		}
+
+		.card {
+			max-width: calc(100vw - 4rem);
+		}
+	}
+
+	@media screen and (max-width: 450px) {
+		.info {
+			display: block;
+			text-align: center;
+		}
+
+		.info h1 {
+			margin: 0;
+		}
+	}
+
+	@media (max-width: 375px) {
+		.card .date {
+			font-size: 17px;
+		}
+
+		.card h1 {
+			font-size: 27px;
+		}
+
+		.card h5 {
+			font-size: 26px;
+		}
+
+		.card .tags .tag {
+			font-size: 23px;
+		}
+	}
+</style>
+
+
+<!--//header-top-->
+<!-- //Line Slider -->
+<div class="top_banner">
+	<!-- SVG Arrows -->
+	<div class="svg-wrap">
+		<svg width="64" height="64" viewBox="0 0 64 64">
+			<path id="arrow-left"
+				d="M46.077 55.738c0.858 0.867 0.858 2.266 0 3.133s-2.243 0.867-3.101 0l-25.056-25.302c-0.858-0.867-0.858-2.269 0-3.133l25.056-25.306c0.858-0.867 2.243-0.867 3.101 0s0.858 2.266 0 3.133l-22.848 23.738 22.848 23.738z" />
+		</svg>
+		<svg width="64" height="64" viewBox="0 0 64 64">
+			<path id="arrow-right"
+				d="M17.919 55.738c-0.858 0.867-0.858 2.266 0 3.133s2.243 0.867 3.101 0l25.056-25.302c0.858-0.867 0.858-2.269 0-3.133l-25.056-25.306c-0.858-0.867-2.243-0.867-3.101 0s-0.858 2.266 0 3.133l22.848 23.738-22.848 23.738z" />
+		</svg>
+	</div>
+
+	<div class="sleekslider">
+		<!-- Slider Pages -->
+		{% for image in ima %}
+		<div style="background-image: url('media/{{image.newimage}}')" class="slide active bg-1">
+			<div class="slide-container">
+				<div class="slide-content ">
+					<p><span class="s-p">Punalur</span> Diocese</p>
+				</div>
+
+			</div>
+		</div>
+		{%endfor%}
+
+
+
+		<!-- Navigation Arrows with Thumbnails -->
+		{% comment %} <nav class="nav-split">
+			<nav class="nav-split">
+				<a class="prev" href="">
+					<span class="icon-wrap"><svg class="icon" width="22" height="22" viewBox="0 0 64 64">
+							<use xlink:href="#arrow-left" />
+						</svg></span>
+					<div>
+						<h3>test</h3>
+						<img alt="Previous thumb" />
+					</div>
+				</a>
+				<a class="next" href="">
+					<span class="icon-wrap"><svg class="icon" width="22" height="22" viewBox="0 0 64 64">
+							<use xlink:href="#arrow-right" />
+						</svg></span>
+					<div>
+						<h3>test</h3>
+						<img alt="Next thumb" />
+					</div>
+				</a>
+			</nav> {% endcomment %}
+
+			<!-- Pagination -->
+
+			<nav class="pagination">
+				{% comment %} <span class="current"></span> {% endcomment %}
+				{% for i in num %}
+				<span></span>
+				{% endfor %}
+
+			</nav>
+
+
+
+			<!-- Navigation Tabs -->
+			<nav class="tabs">
+				<div class="tab-container">
+					<ul>
+						{% comment %} <li class="current"></li> {% endcomment %}
+						{% for i in num %}
+						<li></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</nav>
+	</div>
+
+
+	<!-- JavaScripts -->
+	<script type="text/javascript" src="{% static 'js/sleekslider.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+	<!--welcome-->
+</div>
+
+<!-- /Line Slider -->
+</div>
+<!--footer-->
+
+<!-- Services -->
+<div class="services" id="services">
+	<div class="container">
+
+		<div class="inner-w3">
+			<div class="sub-hd">
+				<h3 class="tittle">ABOUT <span>US</span></h3>
+			</div>
+		</div>
+
+		<div class="inner_tabs">
+			<h2 class="tittle">Welcome to Punalur Diocese</h2>
+			{% for j in about  %}
+			<p class="sub-para">{{j.short_desc}}</p>
+			{% endfor %}
+			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+
+				<div id="myTabContent" class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="expeditions"
+						aria-labelledby="expeditions-tab">
+						<div class="col-md-5 col-sm-5 tab-image">
+							<img src="{% static '/images/cathedral.jpg' %}" alt="Cathedral">
+						</div>
+						<div class="col-md-7 col-sm-7 tab-info">
+						<p>
+							Punalur diocese is located in the southern Kerala. It is one of the oldest Catholic centers. The diocese is bound in the north by alappuzha diocese, Northeast by the Pathanamthitta district,<br> in the east by Thirunelveli district of Tamil Nadu, in the south by Thiruvananthapuram district and in the west by Kollam diocese. In a land area of 5072 square kilometers, the diocesan territory covers the entire civil district of Pathanamthitta and a few sub divisions....
+						</p>
+						<a style="position: relative; left:-16px;height:auto; border:2px;border-radius: 3px;    border: 2px;	border-radius: 0;padding: 2vh;width: 185px; margin-left: 1rem;	font-size: x-large;	margin-top: 2rem;width:auto; "
+						href="about" class="btn btn-danger ">Read more</a>
+							<div class="clearfix"></div>
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+<!-- //Services -->
+<!--medicinal-->
+
+
+<!--medicinal-->
+<div class="grid_2" id="tender">
+	<div class="container">
+		<div style="margin:5rem" class="sub-hd">
+			<h3 class="tittle">Our <span>Bishop</span></h3>
+		</div>
+
+
+		<div class="inner_tabs">
+
+			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+				{% for j in bp %}
+				<div id="myTabContent" class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="expeditions"
+						aria-labelledby="expeditions-tab">
+						<div class="col-md-5 col-sm-5 tab-image">
+							<img src="media/{{j.bimage}}" alt="Cathedral">
+						</div>
+						<div class="col-md-7 col-sm-7 tab-info">
+							{{j.bdata|safe}}
+							<div class="clearfix"></div>
+						</div>
+						{% endfor %}
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="box_1 one">
+
+
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+<!--//team-->
+<!---news-->
+<div class="review-slider">
+	<div style="margin-bottom:80px" class="sub-hd">
+		<h3 class="tittle">OUR LATEST <span>NEWS</span></h3>
+	</div>
+
+	<div style="margin-bottom:110px" class="container  ">
+
+		<section class="cards-wrapper">
+			{% for i in news|slice:"3" %} 
+			<div class="card-grid-space">
+			  
+			  {% comment %} <div class="num">{{i.serial_no}}</div> {% endcomment %}
+			 
+				<a class="card" href="{{i.slug}}" style="--bg-img: url('/media/{{i.Blog_Thumbnail}}')">
+				  <div>
+					<h1>{{i.title}}</h1>
+					  <p >{{i.short_description|truncatechars:50}}</p>
+						<h5>- {{i.author}}<h5>
+						  <div class="date" style="text-transform:lowercase;">{{i.Time_stamp|naturaltime}}</div>
+							<div class="tags">
+							 <div class="tag">Read More...</div>
+					</div>
+				  </div>
+				</a>
+			  </div>
+			  {% endfor %}
+			</div>
+		  
+			<!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
+		  </section>
+
+	</div>
+
+
+
+	<!--//news-->
+
+
+	<div class="bottom">
+		<div class="container">
+
+			<div style="width" class="bottom-top">
+				{% for i in bs %}
+				<h3>Bishop's <span class="opening">Schedule</span></h3>
+				<div class="opening_hours">
+					<p style="margin-bottom:3em;">Bishop's Schedules from {{i.frm}} to {{i.to}} {{i.month}}</p>
+					{% endfor %}
+					{% for j in bv %}
+					<ul class="times">
+						<li><i class="glyphicon glyphicon-time"> </i><span class="week">{{j.venue}}</span>
+							<div class="hours">{{j.datex}}</div>
+							<div class="clearfix"></div>
+						</li>
+
+
+
+					</ul>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--/reviews-->
+	<div id="review" class="testimonials-review">
+		<div class="container">
+			<div class="sub-hd">
+				<h3 class="tittle lost">Bible <span>Verses</span> for the day</h3>
+			</div>
+			{% block css %}
+			<link href="{% static 'css/style.css '%}" rel='stylesheet' type='text/css' />
+			{% endblock %}
+			<div class="testimonials">
+				<div class="monials">
+					<!--//screen-gallery-->
+					<div class="sreen-gallery-cursual">
+						<!-- required-js-files-->
+						<link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+						<script src="{% static 'js/owl.carousel.js' %}"></script>
+						<script>
+							$(document).ready(function () {
+								$("#owl-demo").owlCarousel({
+									items: 1,
+									lazyLoad: true,
+									autoPlay: true,
+									navigation: false,
+									navigationText: false,
+									pagination: true,
+								});
+							});
+						</script>
+						<!--//required-js-files-->
+						<div id="owl-demo" class="owl-carousel">
+							{% for bib in bible %}
+							<div class="item-owl">
+
+								<p class="speech">"{{bib.versus}}"</p>
+								<div class="client-info">
+									{% comment %} <img src="static/images/t1.jpg" alt=" " /> {% endcomment %}
+
+									<h4>{{bib.reference}}</h4>
+
+								</div>
+							</div><!-- /.item -->
+							{% endfor %}
+							
+						</div>
+						<!--//screen-gallery-->
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//reviews-->
+
+</div>{% endblock %}
