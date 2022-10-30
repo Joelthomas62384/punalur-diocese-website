@@ -20,13 +20,10 @@ from . import views
 urlpatterns = [
     path("",views.home,name="Home"),
     path("about",views.about,name="About"),
-    # path("blog",views.blog,name="Blog"),
+
     path("contact",views.contact,name="Contact"),    
-    # path("search",views.blog_search,name="Search"),    
-    # path('postComment', views.postComment, name="postComment"),
-    path("clergy",views.clergy,name="Clergy"),
-    # path("Ministries",views.ministries,name="Ministries"),
-    # path("News",views.News,name="News"),
-    # path("News/<str:slug>",views.news_single,name="News"),
-    # path("<str:slug>",views.blog_single,name="Blog"),
+
+    path("diocese",views.diocese,name="diocese"),
+    
+   
 ]

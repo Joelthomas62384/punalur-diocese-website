@@ -69,21 +69,16 @@ def about(request):
 
 
 
-def clergy(request):
+def diocese(request):
     about=About.objects.all()
     content={
         'about':about
     }
-    return render (request,"typography.html",content)
+    return render (request,"diocese.html",content)
 
 
 
-# def ministries(request):
-#     about=About.objects.all()
-#     content={
-#         'about':about
-#     }
-#     return render(request,"gallery.html",content)
+
 
 
 

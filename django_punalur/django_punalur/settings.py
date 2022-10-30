@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'blog',
     'News',
     'ministries',
+    'parish',
+    'clergy',
 ]
 
 MIDDLEWARE = [
