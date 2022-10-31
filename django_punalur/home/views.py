@@ -1,7 +1,7 @@
 from audioop import reverse
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import About, Bishop, Contact, bibleverse, bishopschedule, bishopvenue, carouselimg
+from .models import About, Bishop, Contact, Religious_Women, bibleverse, bishopschedule, bishopvenue, carouselimg, downloads
 from datetime import datetime
 from django.contrib import messages
 from News.models import news_Post
@@ -76,6 +76,15 @@ def diocese(request):
     }
     return render (request,"diocese.html",content)
 
+def religious_women(request):
+    religious_woman=Religious_Women.objects.all().order_by('Congrigation')
+    about=About.objects.all()
+    context={
+        'rewo':religious_woman,
+        'about':about
+    }
+    return render(request,'religiousWomen.html',context)
+
 
 
 
@@ -104,69 +113,38 @@ def contact(request):
 
 
 
-# def blog(request):
-
-#     about=About.objects.all()
-#     blog=Blog_Post.objects.all()
-  
-    
-    # content={
-    #     'about':about,
-    #     'blog':blog,
+def search(request):
+    about=About.objects.all()
+   
         
-    # }
-    # return render(request,"blog.html",content)
-
-
-
-# def News(request):
-#     about=About.objects.all()
-#     content={
-#         'about':about
-#     }
-#     return render (request, "News.html",content)
-
-
-
-
-# def news_single(request):
-#     pass
-
-
-# def blog_search(request):
+    query=request.GET['priestSearch']
+    print("This is the empty",query)
     
-#     query=request.GET['searchBlog']
 
-#     if len(query)>70:
-#         posts=Blog_Post.objects.none()
-#     else:
+    if len(query)>70:
+        convent=Religious_Women.objects.none()
+    else:
                 
-#         posts_title=Blog_Post.objects.filter(title__icontains=query)
-#         content_posts=Blog_Post.objects.filter(content__icontains=query)
-#         short_description_posts=Blog_Post.objects.filter(short_description__icontains=query)
-#         serial_no_posts=Blog_Post.objects.filter(serial_no__icontains=query)
-#         Time_stamp_posts=Blog_Post.objects.filter(Time_stamp__icontains=query)
-#         author_posts=Blog_Post.objects.filter(author__icontains=query)
-#         posts=posts_title.union(content_posts,short_description_posts,short_description_posts,serial_no_posts,Time_stamp_posts,author_posts)
+        house_name=Religious_Women.objects.filter(name__icontains=query)
+        address=Religious_Women.objects.filter(Address__icontains=query)
+        seo=Religious_Women.objects.filter(seo__icontains=query)
+        Congrigation=Religious_Women.objects.filter(Congrigation__icontains=query)
+        convent=house_name.union(address,seo,Congrigation)
+       
+        # posts=posts_title.union(content_posts,short_description_posts,short_description_posts,serial_no_posts,Time_stamp_posts,author_posts).order_by('-Time_stamp')
 
-#     if posts.count()==0:
-#         messages.warning(request, "No search results found. Please refine your query.")
-#     content={
-#         'query':query,
-#         'posts':posts
-#     }
-#     return render(request,"blogSearch.html",content)
+    if convent.count()==0:
+        messages.warning(request, "No search results found. Please refine your query.")
+    content={
+        'query':query,
+        'convent':convent,
+        'about':about
+    }
+    return render(request,"relgiousWomenSearch.html",content)
 
-# def postComment(request):
-#     if request.method=="POST":
-#         comment=request.POST.get('comment')
-#         username=request.POST.get('nameComment')
-#         postSno =request.POST.get('postSno')
-#         post= Blog_Post.objects.get(sno=postSno)
-#         comment=BlogComment(comment= comment, username=username, post=post)
-#         comment.save()
-#         messages.success(request, "Your comment has been posted successfully")
-
-        
-
-    
+def download(request):
+    context={
+        'download':downloads.objects.all(),
+        'about':About.objects.all()
+    }
+    return render(request,'downloads.html',context)

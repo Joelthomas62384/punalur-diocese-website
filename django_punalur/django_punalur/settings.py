@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'ministries',
     'parish',
     'clergy',
+    'institution',
 ]
 
 MIDDLEWARE = [

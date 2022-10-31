@@ -32,4 +32,5 @@ urlpatterns = [
     path("ministries/",include("ministries.urls")),
     path("parish/",include("parish.urls")),
     path("clergy/",include("clergy.urls")),
+    path("institution/",include("institution.urls")),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

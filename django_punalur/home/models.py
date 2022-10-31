@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.utils.timezone import now
+from django import forms
 
 
 
@@ -62,4 +63,27 @@ class Contact(models.Model):
 
     def __str__(self) -> str:
         return self.name_of_person
+
+
+
+class Religious_Women(models.Model):
+    serial_number=models.AutoField(primary_key=True)
+    name=models.CharField(max_length=1000,default="")
+    seo=models.CharField(max_length=10000,default="")
+    Congrigation=models.CharField(max_length=200,default="")
+    image=models.ImageField(upload_to="religous woman")
+    Patron=models.CharField(max_length=200,default="")
+    Phone_Number=models.CharField(max_length=200,default="")
+    Email_Id=models.CharField(max_length=200,default="")
+    Address=models.CharField(max_length=20000,default="")
+    
+
+    def __str__(self) -> str:
+        return self.name
+class downloads(models.Model):
+    title = models.CharField(max_length=5500, default="")
+    file = models.FileField(upload_to="downloads",max_length=100000)
+
+    def __str__(self) -> str:
+        return self.title
 

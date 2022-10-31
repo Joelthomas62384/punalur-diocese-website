@@ -24,6 +24,9 @@ urlpatterns = [
     path("contact",views.contact,name="Contact"),    
 
     path("diocese",views.diocese,name="diocese"),
+    path("Religiouswomen",views.religious_women,name="religiouswomen"),
+    path("search",views.search,name="search"),
+    path("Download",views.download,name="download"),
     
    
 ]

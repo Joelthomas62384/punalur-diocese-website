@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block active3 %} menu__item--current{% endblock %}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+{% block css %}
+<script
+    type="applisalonion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Custom Theme files -->
+<link href="/{% static 'css/style.css'%}" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="/{% static 'css/slider.css'%}">
+<script src="/{% static 'js/jquery-1.11.1.min.js'%}"></script>
+<script type="text/javascript" src="/{% static 'js/move-top.js'%}"></script>
+<script type="text/javascript" src="/{% static 'js/easing.js'%}"></script>
+<!--/web-font-->
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+<!--/script-->
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+        });
+    });
+</script>
+{% endblock %}
+
+
+<!--start-home-->
+{% block body %}
+
+<!--/single-->
+
+
+<div class="single">
+    <div class="container">
+
+
+
+        <div class="article-post w3l">
+            <div class="post-details s-page">
+
+                <h2>{{institution.institution_name}}</h2>
+                {% comment %} <p style="margin-bottom:5em;">- <strong>{{news_post.author}}</strong> {% endcomment %}
+                    {% comment %} |{{news_post.Time_stamp|naturaltime}} </p> {% endcomment %}
+                {{institution.content|safe}}
+            </div>
+
+            <!--post-details-->
+            <div class="clearfix"> </div>
+        </div>
+
+        {% comment %} Comments {% endcomment %}
+
+
+
+
+       
+        
+    </div>
+</div>
+</div>
+</div>
+<!--//single-->
+
+<!--/start-footer-section-->
+
+
+
+{% endblock %}
