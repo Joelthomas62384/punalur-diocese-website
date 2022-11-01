@@ -1,1 +1,1 @@
-web: gunicorn django_punalur.wsgi
+web: gunicorn django_punalur.wsgi --log-file--
