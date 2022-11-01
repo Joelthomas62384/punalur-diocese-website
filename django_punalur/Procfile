@@ -1,1 +1,3 @@
+realese:Python 3.10.6
+
 web: gunicorn django_punalur.wsgi --log-file--
